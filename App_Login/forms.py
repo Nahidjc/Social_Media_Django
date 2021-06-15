@@ -5,7 +5,10 @@ from django.forms import fields
 
 
 class CreateNewUser(UserCreationForm):
-    email = forms.EmailField(required=True)
+    email = forms.EmailField(required=True, label="", widget=forms.TextInput(
+        attrs={'placeholder': 'Email'}))
+    username = forms.CharField(required=True, label="", widget=forms.TextInput(
+        attrs={'placeholder': 'Username'}))
 
     class Meta:
         model = User

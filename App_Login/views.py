@@ -15,4 +15,4 @@ def sign_up(request):
             user = form.save()
             registered = True
             pass
-    return render(request, 'App_Login/signup.html', context={'title': 'Sign up', 'form': form})
+    return render(request, 'App_Login/sign_up.html', context={'title': 'Sign up', 'form': form})
