@@ -6,7 +6,7 @@
 
 {% block css_block %}
 <style>
-    .sign_up {
+    .login {
         width: 500px;
         padding: 50px;
         border: 1px solid rgb(211, 202, 202);
@@ -25,18 +25,18 @@
 {% endblock %}
 {% block body_block %}
 <center>
-    <div class="sign_up">
+    <div class="login">
 
         <form method="POST">
             {{form|crispy}}
             {% csrf_token %}
-            <button style="width: 100%;" type="submit" class=" btn btn-primary">Sign Up</button>
+            <button style="width: 100%;" type="submit" class=" btn btn-primary">Login</button>
         </form>
 
     </div>
 
     <div class="log_in">
-        <p>Have an account? <a href="{% url 'login' %}">Login</a></p>
+        <p>Don't Have an account? <a href="{% url 'sign_up' %}">Sign Up</a></p>
     </div>
 </center>
 
