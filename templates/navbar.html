@@ -40,6 +40,16 @@
                     <a href="{% url 'App_Login:edit' %}" class="nav-link">Edit Profile</a>
                 </li>
                 <li class="nav-item">
+                    {% if user.user_profile.profile_pic %}
+                    <a href="#"><img src="/media/{{user.user_profile.profile_pic}}" class="rounded-circle" width="40px"
+                            height="40px" alt="image"></a>
+                    {% else %}
+                    <a href="#"><img src="/media/default.png" alt="image" class="rounded-circle" width="40px"
+                            height="40px"></a>
+                    {% endif %}
+
+                </li>
+                <li class="nav-item">
                     <a href="{% url 'App_Login:logout' %}" class="nav-link">Logout</a>
                 </li>
                 {% endif %}
