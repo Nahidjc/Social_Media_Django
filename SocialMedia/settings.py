@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'App_Login',
+    'App_Post',
     'crispy_forms',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -114,4 +115,4 @@ STATICFILES_DIRS = [STATIC_DIR]
 # Media
 
 MEDIA_URL = '/media/'
-LOGIN_URL = '/account/home/'
+LOGIN_URL = '/accounts/login/'

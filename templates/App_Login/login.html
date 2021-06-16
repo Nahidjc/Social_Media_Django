@@ -24,6 +24,7 @@
 
 {% endblock %}
 {% block body_block %}
+{% include "navbar.html" %}
 <center>
     <div class="login">
 
@@ -36,7 +37,7 @@
     </div>
 
     <div class="log_in">
-        <p>Don't Have an account? <a href="{% url 'sign_up' %}">Sign Up</a></p>
+        <p>Don't Have an account? <a href="{% url 'App_Login:sign_up' %}">Sign Up</a></p>
     </div>
 </center>
 
