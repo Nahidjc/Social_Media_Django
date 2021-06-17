@@ -1,5 +1,5 @@
 {% extends "navbar.html" %}
-
+{% load crispy_forms_tags %}
 {% block title_block %}
 {{title}}
 {% endblock %}
@@ -8,7 +8,7 @@
 <div class="row">
 
 
-    <div class="col-md-6">
+    <div class="col-lg-6 col-md-12">
         {% if user.user_profile.profile_pic %}
         <img src="/media/{{user.user_profile.profile_pic}}" class="rounded-circle" width="500px" height="500px"
             alt="image">
@@ -16,7 +16,7 @@
         <img src="/media/default.png" alt="image" class="rounded-circle" width="540px" height="240px">
         {% endif %}
     </div>
-    <div class="col-md-6">
+    <div class="col-lg-6 col-md-12">
         <h3>{{user.username}} &nbsp; <a href="{% url 'App_Login:edit' %}"> <button class="btn btn-light">Edit
                     Profile</button> </a></h3>
         <br>
@@ -30,4 +30,30 @@
 <hr>
 
 
+<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">New Post</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Post a Photo</h4>
+            </div>
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data">
+                    {{form|crispy}}
+                    {% csrf_token %}
+                    <button style="width: 100%;" type="submit" class=" btn btn-primary">Post</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 {% endblock %}
