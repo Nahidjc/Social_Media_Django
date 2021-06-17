@@ -6,20 +6,38 @@
 
 {% block css_block %}
 <style>
-    .crop {
+    ul {
+        margin-left: auto !important;
+        margin-right: auto !important;
+
+    }
+
+    li {
+        padding: 5px 50px !important;
+    }
+
+    .post-image {
         width: 200px;
         height: 200px;
         overflow: hidden;
+        border: 2px solid rgb(203, 236, 255);
+
     }
 
-    .crop img {
+    .post-image img {
         width: 400px;
-        height: 350px;
-        margin: -75px 0 0 -100px
+        height: 300px;
+        margin: -75px 0 0 -100px !important;
+
+    }
+
+    .button {
+        margin-bottom: 30px;
     }
 </style>
 
 {% endblock %}
+
 
 {% block body_block %}
 <div class="row">
@@ -47,9 +65,10 @@
 <hr>
 
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+<button type="button" class="btn btn-primary button" data-toggle="modal" data-target="#myModal">
     Create a New Post
 </button>
+<br>
 
 <!-- The Modal -->
 <div class="modal" id="myModal">
@@ -80,9 +99,11 @@
     </div>
 </div>
 
-{% for post in user.post.all %}
-<div class="crop">
-    <img src="/media/{{post.image}}">
+<div class="row">
+    {% for post in user.post.all %}
+    <div class="post-image">
+        <img src="/media/{{post.image}}">
+    </div>
+    {% endfor %}
 </div>
-{% endfor %}
 {% endblock %}
