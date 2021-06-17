@@ -47,7 +47,7 @@ def edit_profile(request):
         if form.is_valid():
             form.save(commit=True)
             #form = EditProfile(instance=profile)
-            return HttpResponseRedirect(reverse('home'))
+            return HttpResponseRedirect(reverse('App_Login:profile'))
     return render(request, 'App_Login/profile.html', context={'form': form})
 
 
@@ -59,4 +59,4 @@ def logout_user(request):
 
 @login_required
 def user_profile(request):
-    return render(request, 'App-Login/user.html', context={'title': 'User'})
+    return render(request, 'App_Login/user.html', context={'title': 'User'})

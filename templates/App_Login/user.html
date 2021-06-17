@@ -5,5 +5,29 @@
 {% endblock %}
 
 {% block body_block %}
+<div class="row">
+
+
+    <div class="col-md-6">
+        {% if user.user_profile.profile_pic %}
+        <img src="/media/{{user.user_profile.profile_pic}}" class="rounded-circle" width="500px" height="500px"
+            alt="image">
+        {% else %}
+        <img src="/media/default.png" alt="image" class="rounded-circle" width="540px" height="240px">
+        {% endif %}
+    </div>
+    <div class="col-md-6">
+        <h3>{{user.username}} &nbsp; <a href="{% url 'App_Login:edit' %}"> <button class="btn btn-light">Edit
+                    Profile</button> </a></h3>
+        <br>
+        <h4>{{user.post.count}} posts &nbsp; &nbsp; {{user.following.count}} followers &nbsp; &nbsp;
+            {{user.follower.count}} following &nbsp; &nbsp; </h4>
+        <br>
+        <h3>{{user.user_profile.full_name}}</h3>
+        <h6>{{user.user_profile.description|linebreaks}}</h6>
+    </div>
+</div>
+<hr>
+
 
 {% endblock %}
