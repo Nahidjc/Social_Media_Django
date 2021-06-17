@@ -4,6 +4,23 @@
 {{title}}
 {% endblock %}
 
+{% block css_block %}
+<style>
+    .crop {
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .crop img {
+        width: 400px;
+        height: 350px;
+        margin: -75px 0 0 -100px
+    }
+</style>
+
+{% endblock %}
+
 {% block body_block %}
 <div class="row">
 
@@ -62,4 +79,10 @@
         </div>
     </div>
 </div>
+
+{% for post in user.post.all %}
+<div class="crop">
+    <img src="/media/{{post.image}}">
+</div>
+{% endfor %}
 {% endblock %}
