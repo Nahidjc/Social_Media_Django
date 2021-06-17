@@ -30,18 +30,22 @@
 <hr>
 
 
-<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">New Post</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Create a New Post
+</button>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
+<!-- The Modal -->
+<div class="modal" id="myModal">
     <div class="modal-dialog">
-
-        <!-- Modal content-->
         <div class="modal-content">
+
+            <!-- Modal Header -->
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Post a Photo</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
+
+            <!-- Modal body -->
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data">
                     {{form|crispy}}
@@ -49,11 +53,13 @@
                     <button style="width: 100%;" type="submit" class=" btn btn-primary">Post</button>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
 
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
     </div>
 </div>
 {% endblock %}
