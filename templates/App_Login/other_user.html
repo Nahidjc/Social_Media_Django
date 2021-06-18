@@ -1,0 +1,74 @@
+{% extends "navbar.html" %}
+{% load crispy_forms_tags %}
+{% block title_block %}
+{{title}}
+{% endblock %}
+
+{% block css_block %}
+<style>
+    ul {
+        margin-left: auto !important;
+        margin-right: auto !important;
+
+    }
+
+    li {
+        padding: 5px 50px !important;
+    }
+
+    .post-image {
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        border: 2px solid rgb(203, 236, 255);
+
+    }
+
+    .post-image img {
+        width: 400px;
+        height: 300px;
+        margin: -75px 0 0 -100px !important;
+
+    }
+
+    .button {
+        margin-bottom: 30px;
+    }
+</style>
+
+{% endblock %}
+
+
+{% block body_block %}
+<div class="row">
+
+
+    <div class="col-lg-6 col-md-12">
+        {% if user_other.user_profile.profile_pic %}
+        <img src="/media/{{user_other.user_profile.profile_pic}}" class="rounded-circle" width="500px" height="500px"
+            alt="image">
+        {% else %}
+        <img src="/media/default.png" alt="image" class="rounded-circle" width="400px" height="400px">
+        {% endif %}
+    </div>
+    <div class="col-lg-6 col-md-12">
+        <h3>{{user_other.username}} &nbsp; </h3>
+        <br>
+        <h4>{{user_other.post.count}} posts &nbsp; &nbsp; {{user_other.following.count}} followers &nbsp; &nbsp;
+            {{user.follower.count}} following &nbsp; &nbsp; </h4>
+        <br>
+        <h3>{{user_other.user_profile.full_name}}</h3>
+        <h6>{{user_other.user_profile.description|linebreaks}}</h6>
+    </div>
+</div>
+<hr>
+
+
+<div class="row">
+    {% for post in user_other.post.all %}
+    <div class="post-image">
+        <img src="/media/{{post.image}}">
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

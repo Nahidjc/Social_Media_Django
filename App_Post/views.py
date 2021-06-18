@@ -8,6 +8,6 @@ from django.contrib.auth.models import User
 @login_required
 def home(request):
     if request.method == 'GET':
-        search = request.GET.get('search')
-        result = User.objects.filter(username=search)
-    return render(request, 'App_Post/home.html', context={'title': 'homepage', 'search': search, })
+        search = request.GET.get('search', '')
+        result = User.objects.filter(username__icontains=search)
+    return render(request, 'App_Post/home.html', context={'title': 'homepage', 'search': search, 'result': result})

@@ -6,10 +6,31 @@
 
 {% block body_block %}
 
-<h1>This is HomePage</h1>
 {% if search %}
+{% for user in result %}
 
-{{search}}
+<div class="row">
+    <div class="col-sm-2">
+
+        {% if user.user_profile.profile_pic %}
+        <img src="/media/{{user.user_profile.profile_pic}}" class="rounded-circle" width="100px" height="100px"
+            alt="image">
+        {% else %}
+        <img src="/media/default.png" alt="image" class="rounded-circle" width="100px" height="100px">
+        {% endif %}
+
+    </div>
+    <div class="col-sm-10">
+        <a href="{% url 'App_Login:user' username=user.username %}"> {{user.username}}</a>
+
+        <br>
+        {{user.user_profile.full_name}}
+    </div>
+</div>
+<br>
+<br>
+
+{% endfor %}
 {% endif %}
 
 {% endblock %}
