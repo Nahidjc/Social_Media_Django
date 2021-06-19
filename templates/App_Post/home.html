@@ -31,6 +31,56 @@
 <br>
 
 {% endfor %}
+{% else %}
+
+<div class="row">
+
+    <div class="col-sm-8">
+
+
+        {% for post in posts %}
+
+        <div style="border: 1px solid #888888;">
+            <div style="padding: 10px;">
+
+                {% if post.author.user_profile.profile_pic %}
+                <img src="/media/{{post.author.user_profile.profile_pic}}" class="rounded-circle" width="50px"
+                    height="50px" alt="image">
+                {% else %}
+                <img src="/media/default.png" alt="image" class="rounded-circle" width="50px" height="50px">
+                {% endif %}
+                <a href="{% url 'App_Login:user' username=post.author %}"> {{post.author}} </a>
+            </div>
+            <img src="/media/{{post.image}}" width="100%">
+
+        </div>
+        <br>
+        <br>
+        {% endfor %}
+
+
+    </div>
+    <div class="col-sm-4">
+        <div class="row">
+            <div class="col-sm-4">
+                {% if user.user_profile.profile_pic %}
+                <img src="/media/{{user.user_profile.profile_pic}}" class="rounded-circle" width="100px" height="100px"
+                    alt="image">
+                {% else %}
+                <img src="/media/default.png" alt="image" class="rounded-circle" width="100px" height="100px">
+                {% endif %}
+            </div>
+            <div class="col-sm-8">
+                {{user.username}}
+                <br>
+                {{user.user_profile.full_name}}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
 {% endif %}
 
 {% endblock %}
